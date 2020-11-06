@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.github.sample.ui.viewmodel.UserViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.activities.UserAlbumListActivity">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            style="@style/Toolbar" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/user_album_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/toolbar"
+            tools:listitem="@layout/list_item_user_album" />
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            style="@style/ProgressBar"
+            tools:visibility="visible" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/error_internet"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/text_size"
+            android:visibility="@{viewModel.isOnline() ? View.GONE : View.VISIBLE}" />
+
+    </RelativeLayout>
+
+</layout>

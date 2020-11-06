@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.github.sample.ui.viewmodel.UserViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            style="@style/Toolbar" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="@dimen/medium_spacing">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:text="@string/txt_album_id"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/text_size" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:text='@{String.valueOf(viewModel.albumId)}'
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/text_size" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:text="@string/txt_photo_id"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/text_size" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:text='@{String.valueOf(viewModel.photoId)}'
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/text_size" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/user_album"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/medium_spacing"
+                    android:layout_marginBottom="@dimen/medium_spacing"
+                    android:adjustViewBounds="true"
+                    app:imageUrl='@{viewModel.userAlbumUrl}'
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:id="@+id/album_title_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/color_blue"
+                    android:gravity="center"
+                    android:padding="24dp"
+                    android:text='@{viewModel.userAlbumTitle}'
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/text_size"
+                    tools:text="Image Text" />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+</layout>
